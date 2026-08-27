@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>纳斯达克100 · 每日简报归档</title>
+<style>
+  :root{
+    --bg:#f5f7fb; --card:#ffffff; --line:#e4eaf3;
+    --ink:#1c2333; --ink-2:#5a6579; --ink-3:#8b96ab;
+    --blue:#1e5ef0; --blue-2:#0ea5e9; --blue-soft:#eaf1ff;
+    --radius:16px; --shadow:0 10px 30px rgba(30,58,138,.07);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px 60px}
+
+  .hero{
+    background:
+      radial-gradient(900px 220px at 12% -40px, rgba(30,94,240,.10), transparent 60%),
+      radial-gradient(700px 200px at 92% -30px, rgba(14,165,233,.10), transparent 60%),
+      var(--card);
+    border-bottom:1px solid var(--line);
+    padding:38px 0 30px; margin-bottom:30px;
+  }
+  .kicker{font-size:12px;letter-spacing:.22em;color:var(--blue);font-weight:700;margin-bottom:10px}
+  .hero h1{font-size:27px;font-weight:800;letter-spacing:.5px}
+  .hero .sub{color:var(--ink-2);font-size:14px;margin-top:8px}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .meta-chip{
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--blue-soft);color:#1443b8;border:1px solid #d3e2ff;
+    font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:999px;
+  }
+  .meta-chip .dot{width:7px;height:7px;border-radius:50%;background:var(--blue)}
+  .meta-chip.gray{background:#f1f4f9;color:var(--ink-2);border-color:var(--line)}
+  .meta-chip.gray .dot{background:var(--ink-3)}
+
+  .list{display:flex;flex-direction:column;gap:14px}
+  .row{
+    display:grid;grid-template-columns:86px 1fr 28px;gap:18px;align-items:stretch;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:20px 22px;text-decoration:none;color:inherit;
+    transition:border-color .2s ease,transform .2s ease;
+  }
+  .row:hover{border-color:var(--blue-2);transform:translateY(-2px)}
+  .date{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    border-right:1px solid var(--line);padding-right:18px;
+  }
+  .d-main{font-size:22px;font-weight:800;color:var(--blue);font-variant-numeric:tabular-nums}
+  .d-year{font-size:12px;color:var(--ink-3);margin-top:1px}
+  .d-dow{font-size:11.5px;color:var(--ink-2);background:var(--blue-soft);padding:1px 9px;border-radius:999px;margin-top:7px}
+  .head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .head h2{font-size:16.5px;font-weight:700;line-height:1.4}
+  .count{
+    font-size:11.5px;font-weight:600;color:#1443b8;background:var(--blue-soft);
+    border:1px solid #d3e2ff;padding:2px 10px;border-radius:999px;white-space:nowrap;
+  }
+  .sub{font-size:12.5px;color:var(--ink-3);margin-top:5px}
+  .hl{font-size:13.5px;color:#333d52;margin-top:9px;font-weight:500}
+  .hl::before{content:"★ ";color:var(--blue-2);font-size:12px}
+  .lead{font-size:13px;color:var(--ink-2);margin-top:5px;display:-webkit-box;
+    -webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .arrow{font-size:26px;color:var(--ink-3);align-self:center;justify-self:center;font-weight:300}
+  .row:hover .arrow{color:var(--blue-2)}
+
+  footer{
+    margin-top:26px;padding:22px;text-align:center;
+    color:var(--ink-3);font-size:12px;background:var(--card);
+    border:1px solid var(--line);border-radius:var(--radius);
+  }
+  footer .line2{margin-top:6px;color:#a9b2c4}
+
+  @media (max-width:640px){
+    .hero h1{font-size:22px}
+    .row{grid-template-columns:64px 1fr 16px;gap:12px;padding:16px}
+    .date{padding-right:12px}
+    .d-main{font-size:18px}
+    .head h2{font-size:15px}
+    .lead{-webkit-line-clamp:3}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="kicker">NASDAQ-100 DAILY BRIEFING ARCHIVE</div>
+    <h1>纳斯达克100 · 每日简报归档</h1>
+    <p class="sub">按日期倒序收录每日投资动态简报，点击任意一天进入全文</p>
+    <div class="meta-row">
+      <span class="meta-chip"><span class="dot"></span>共 1 期简报</span>
+      <span class="meta-chip gray"><span class="dot"></span>最新：2026-08-21</span>
+      <span class="meta-chip gray"><span class="dot"></span>最早：2026-08-21</span>
+    </div>
+  </header>
+
+  <main class="list">
+    <a class="row" href="briefings/NASDAQ100_daily_briefing_20260821.html">
+      <div class="date">
+        <span class="d-main">08-21</span>
+        <span class="d-year">2026</span>
+        <span class="d-dow">周五</span>
+      </div>
+      <div class="body">
+        <div class="head">
+          <h2>纳斯达克100 · 每日投资动态简报 | 2026-08-21</h2>
+          <span class="count">10 条动态</span>
+        </div>
+        <p class="sub">聚焦纳斯达克100 / 美股 / 全球投资领域最新重要动态，按发布时间倒序呈现</p>
+        <p class="hl">今日焦点：港股五连升站上26000点，黄金、金融、AI应用齐拉升</p>
+        <p class="lead">8月21日恒生指数收涨 +1.21% 报26009.46点，录得5连升，恒生科技指数涨 +1.40%。金融股集体活跃：中国人寿涨 +5%、中国平安、中国银河涨超4%；现货黄金突破4550美元，黄金股午后涨幅扩大，赤峰黄金大涨 +12.5%；AI应用概念尾盘急涨，MINIMAX-…</p>
+      </div>
+      <div class="arrow">›</div>
+    </a>
+  </main>
+
+  <footer>
+    <div>数据来源：腾讯自选股、新浪财经、华尔街见闻、证券时报、天天基金、CNBC、日经等公开资讯整理</div>
+    <div class="line2">免责声明：以上内容基于公开数据和量化分析，仅供参考，不构成投资建议。市场有风险，投资需谨慎。</div>
+  </footer>
+
+</div>
+</body>
+</html>
