@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>纳斯达克100 · 每日投资动态简报 | 2026-08-21</title>
+<style>
+  :root{
+    --bg:#f5f7fb; --card:#ffffff; --line:#e4eaf3;
+    --ink:#1c2333; --ink-2:#5a6579; --ink-3:#8b96ab;
+    --blue:#1e5ef0; --blue-2:#0ea5e9; --blue-soft:#eaf1ff;
+    --up:#e0392e; --up-soft:#fdeeee; --down:#0a9e5c; --down-soft:#e8f8f1;
+    --amber:#b45309; --amber-soft:#fdf3e3;
+    --radius:16px; --shadow:0 10px 30px rgba(30,58,138,.07);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px 60px}
+
+  /* ===== 顶部 ===== */
+  .hero{
+    background:
+      radial-gradient(900px 220px at 12% -40px, rgba(30,94,240,.10), transparent 60%),
+      radial-gradient(700px 200px at 92% -30px, rgba(14,165,233,.10), transparent 60%),
+      var(--card);
+    border-bottom:1px solid var(--line);
+    padding:38px 0 30px; margin-bottom:34px;
+  }
+  .kicker{font-size:12px;letter-spacing:.22em;color:var(--blue);font-weight:700;margin-bottom:10px}
+  .hero h1{font-size:27px;font-weight:800;letter-spacing:.5px}
+  .hero .sub{color:var(--ink-2);font-size:14px;margin-top:8px}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .meta-chip{
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--blue-soft);color:#1443b8;border:1px solid #d3e2ff;
+    font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:999px;
+  }
+  .meta-chip .dot{width:7px;height:7px;border-radius:50%;background:var(--blue)}
+  .meta-chip.gray{background:#f1f4f9;color:var(--ink-2);border-color:var(--line)}
+  .meta-chip.gray .dot{background:var(--ink-3)}
+
+  /* ===== 时间轴布局 ===== */
+  .timeline{position:relative;padding-left:0}
+  .tl-item{
+    display:grid;grid-template-columns:96px 34px 1fr;
+    margin-bottom:22px;opacity:0;transform:translateY(22px);
+    transition:opacity .6s ease,transform .6s ease;
+  }
+  .tl-item.in{opacity:1;transform:none}
+  .tl-time{
+    text-align:right;padding-top:22px;padding-right:14px;
+    display:flex;flex-direction:column;align-items:flex-end;gap:2px;
+  }
+  .tl-date{font-size:15px;font-weight:800;color:var(--ink);letter-spacing:.5px}
+  .tl-clock{font-size:12px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+  .tl-track{position:relative}
+  .tl-track::before{
+    content:"";position:absolute;left:50%;top:0;bottom:-22px;width:2px;
+    background:linear-gradient(180deg,var(--blue-2),var(--line));transform:translateX(-50%);
+  }
+  .tl-item:last-child .tl-track::before{bottom:auto;height:40px}
+  .tl-dot{
+    position:absolute;left:50%;top:24px;transform:translateX(-50%);
+    width:12px;height:12px;border-radius:50%;background:#fff;
+    border:3px solid var(--blue);box-shadow:0 0 0 4px var(--blue-soft);z-index:1;
+  }
+
+  /* ===== 论文卡片 ===== */
+  .tl-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:22px 24px 20px;position:relative;
+  }
+  .tl-card::before{
+    content:"";position:absolute;left:0;top:18px;bottom:18px;width:4px;border-radius:4px;
+    background:linear-gradient(180deg,var(--blue),var(--blue-2));
+  }
+  .card-head{display:flex;align-items:flex-start;gap:12px}
+  .seq{
+    flex:0 0 auto;width:34px;height:34px;border-radius:10px;
+    background:linear-gradient(135deg,var(--blue),var(--blue-2));color:#fff;
+    font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;
+    font-variant-numeric:tabular-nums;
+  }
+  .card-head h2{font-size:16.5px;font-weight:700;line-height:1.45;padding-top:2px}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 10px}
+  .badge{
+    display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;
+    padding:3px 10px;border-radius:999px;
+  }
+  .badge.src{background:var(--blue-soft);color:#1443b8;border:1px solid #d3e2ff}
+  .badge.src::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue)}
+  .badge.tag{background:#eef2f8;color:var(--ink-2);border:1px solid var(--line)}
+  .summary{font-size:13.5px;color:#333d52}
+  .summary b{color:var(--ink)}
+  .why{
+    margin-top:13px;background:#f8fafd;border:1px dashed #cfd9e8;border-radius:12px;
+    padding:12px 15px;font-size:13px;color:#3c4a63;
+  }
+  .why b{color:var(--amber);font-size:12.5px;letter-spacing:.06em}
+  .why b::before{content:"★ ";font-size:11px}
+  .num.up{color:var(--up);font-weight:700}
+  .num.down{color:var(--down);font-weight:700}
+  .num.flat{color:var(--ink-2);font-weight:600}
+  .pill{
+    display:inline-block;font-size:11px;font-weight:700;padding:1px 8px;border-radius:6px;margin-left:4px;
+  }
+  .pill.up{background:var(--up-soft);color:var(--up)}
+  .pill.down{background:var(--down-soft);color:var(--down)}
+
+  /* ===== 页脚 ===== */
+  footer{
+    margin-top:14px;padding:22px;text-align:center;
+    color:var(--ink-3);font-size:12px;background:var(--card);
+    border:1px solid var(--line);border-radius:var(--radius);
+  }
+  footer .line2{margin-top:6px;color:#a9b2c4}
+
+  /* ===== 响应式 ===== */
+  @media (max-width:760px){
+    .hero h1{font-size:22px}
+    .tl-item{grid-template-columns:66px 22px 1fr}
+    .tl-time{padding-right:8px}
+    .tl-date{font-size:13px}
+    .tl-card{padding:18px 16px 16px}
+    .card-head h2{font-size:15px}
+  }
+  @media (max-width:480px){
+    .wrap{padding:0 12px 40px}
+    .tl-item{grid-template-columns:56px 18px 1fr}
+    .tl-track::before{left:50%}
+    .tl-dot{width:10px;height:10px;border-width:2.5px}
+    .seq{width:30px;height:30px;font-size:13px}
+    .badges{gap:6px}
+    .summary{font-size:13px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="kicker">DAILY INVESTMENT BRIEFING · NASDAQ-100</div>
+    <h1>纳斯达克100 · 每日投资动态简报</h1>
+    <p class="sub">聚焦纳斯达克100 / 美股 / 全球投资领域最新重要动态，按发布时间倒序呈现</p>
+    <div class="meta-row">
+      <span class="meta-chip"><span class="dot"></span>时间窗：2026-08-20 08:00 — 08-21 17:00（北京时间）</span>
+      <span class="meta-chip gray"><span class="dot"></span>新闻总数：10 条</span>
+      <span class="meta-chip gray"><span class="dot"></span>生成时间：2026-08-21 17:05</span>
+    </div>
+  </header>
+
+  <main class="timeline">
+
+    <!-- 01 -->
+    <article class="tl-item">
+      <div class="tl-time"><span class="tl-date">08-21</span><span class="tl-clock">15:00</span></div>
+      <div class="tl-track"><span class="tl-dot"></span></div>
+      <div class="tl-card">
+        <div class="card-head"><span class="seq">01</span><h2>港股五连升站上26000点，黄金、金融、AI应用齐拉升</h2></div>
+        <div class="badges"><span class="badge src">腾讯自选股</span><span class="badge tag">港股</span><span class="badge tag">恒生指数</span></div>
+        <p class="summary">8月21日恒生指数收涨 <b class="num up">+1.21%</b> 报26009.46点，录得5连升，恒生科技指数涨 <b class="num up">+1.40%</b>。金融股集体活跃：中国人寿涨 <b class="num up">+5%</b>、中国平安、中国银河涨超4%；现货黄金突破4550美元，黄金股午后涨幅扩大，赤峰黄金大涨 <b class="num up">+12.5%</b>；AI应用概念尾盘急涨，MINIMAX-W涨近 <b class="num up">+12%</b>、智谱涨超10%。网易云音乐绩后大跌 <b class="num down">-15.5%</b> 拖累影视娱乐板块。</p>
+        <div class="why"><b>关注原因</b>恒指当前约11倍PE、恒生科技前瞻PE不足17倍，显著低于纳指约24倍、标普约20倍；摩根士丹利将恒指基准目标上调至28400点，南向资金7月净流入约630亿港元。机构定性为"技术性修复"，V型反转难度大，反弹中需警惕套牢盘解套抛压。</div>
+      </div>
+    </article>
+
+    <!-- 02 -->
+    <article class="tl-item">
+      <div class="tl-time"><span class="tl-date">08-21</span><span class="tl-clock">09:00</span></div>
+      <div class="tl-track"><span class="tl-dot"></span></div>
+      <div class="tl-card">
+        <div class="card-head"><span class="seq">02</span><h2>比特币突破7.2万美元，黄金站稳200日均线</h2></div>
+        <div class="badges"><span class="badge src">华尔街见闻</span><span class="badge tag">加密资产</span><span class="badge tag">贵金属</span></div>
+        <p class="summary">比特币突破 <b class="num up">7.2万美元</b>，为6月初以来首次，三日累计涨超15%；以太坊两日涨超20%。Coinbase涨 <b class="num up">+7.58%</b>、MicroStrategy涨 <b class="num up">+7.81%</b>。现货黄金三日连涨，伦敦金现约4580美元/盎司，COMEX黄金期货约4604美元，站稳200日均线（约4514美元）；现货白银站上 <b class="num up">68美元</b>。</p>
+        <div class="why"><b>关注原因</b>美债回购干预效果存疑叠加财政担忧（国债破40万亿），加密与黄金同步走强，凸显"主权信用担忧"对硬资产的驱动——金价在名义收益率上行背景下仍上涨，是财政/债务逻辑的显性信号。CBOE正寻求推出美国首个3倍杠杆比特币/以太坊ETF。</div>
+      </div>
+    </article>
+
+    <!-- 03 -->
+    <article class="tl-item">
+      <div class="tl-time"><span class="tl-date">08-20</span><span class="tl-clock">盘后</span></div>
+      <div class="tl-track"><span class="tl-dot"></span></div>
+      <div class="tl-card">
+        <div class="card-head"><span class="seq">03</span><h2>阿里巴巴财报：AI资本开支+75%吞噬利润，云增速45%创22季新高</h2></div>
+        <div class="badges"><span class="badge src">腾讯自选股</span><span class="badge src">CNBC</span><span class="badge tag">中概股</span><span class="badge tag">财报</span></div>
+        <p class="summary">2027财年Q1（截至2026年6月）营收2689.53亿元（<b class="num up">+9%</b>）略超预期；但经营利润151.61亿元（<b class="num down">-57%</b>）、净利润104.44亿元（<b class="num down">-75%</b>），资本开支676.78亿元（<b class="num up">+75%</b>），自由现金流净流出446.7亿元。阿里云外部收入增速加速至 <b class="num up">45%</b>（22个季度新高），AI相关产品收入123.76亿元连续12个季度三位数增长；CEO吴泳铭称下季度AI产品年化收入（ARR）将接近100亿美元。财报后美股盘前一度跌超4%，当日收涨1.26%。</p>
+        <div class="why"><b>关注原因</b>云业务高增长验证AI叙事，但利润被资本开支反噬，"以投入换增长"的代价显性化，与美股云厂商叙事一致。阿里是中国AI资本开支风向标，其ARR指引与资本开支节奏，是港股互联网估值修复的核心变量。</div>
+      </div>
+    </article>
+
+    <!-- 04 -->
+    <article class="tl-item">
+      <div class="tl-time"><span class="tl-date">08-21</span><span class="tl-clock">04:00</span></div>
+      <div class="tl-track"><span class="tl-dot"></span></div>
+      <div class="tl-card">
+        <div class="card-head"><span class="seq">04</span><h2>美股三大指数收跌：纳指100五连跌，科技七巨头集体下挫</h2></div>
+        <div class="badges"><span class="badge src">新浪财经</span><span class="badge src">华尔街见闻</span><span class="badge tag">美股</span><span class="badge tag">纳斯达克100</span></div>
+        <p class="summary">标普500跌 <b class="num down">-0.87%</b> 收7641.16点，道指跌 <b class="num down">-1.32%</b>（-703.84点）收52759.21点，纳指跌 <b class="num down">-1.00%</b>，纳指100跌 <b class="num down">-0.72%</b> 收29213.16点，录得连续第五个交易日收跌；VIX收涨7.52%报16.01。七巨头全线下跌：亚马逊 <span class="num down">-2.16%</span>、苹果 <span class="num down">-1.75%</span>、特斯拉 <span class="num down">-1.71%</span>、谷歌 <span class="num down">-1.17%</span>、微软 <span class="num down">-0.46%</span>。存储、光通信、半导体逆势走强，费城半导体指数收涨 <b class="num up">+0.53%</b> 报11800点。</p>
+        <div class="why"><b>关注原因</b>财政部国债回购提振"一日游"，长端收益率重新上行，叠加油价飙升与沃尔玛暴雷，三重利空共振。30年期美债收益率重回5.2%上方、逼近近20年高位，"更高融资成本给牛市踩刹车"的担忧升温。下周关键变量：英伟达财报（8/26）与杰克逊霍尔年会（8/27-29）。</div>
+      </div>
+    </article>
+
+    <!-- 05 -->
+    <article class="tl-item">
+      <div class="tl-time"><span class="tl-date">08-21</span><span class="tl-clock">04:00</span></div>
+      <div class="tl-track"><span class="tl-dot"></span></div>
+      <div class="tl-card">
+        <div class="card-head"><span class="seq">05</span><h2>沃尔玛业绩暴雷：同店销售六年最慢，市值蒸发约830亿美元</h2></div>
+        <div class="badges"><span class="badge src">新浪财经</span><span class="badge tag">消费</span><span class="badge tag">财报</span></div>
+        <p class="summary">沃尔玛美国同店销售仅增 <b class="num up">2.6%</b>（分析师预期约3.8%），为六年来最慢增速，至少五年来首次不及预期；季度营收约1879亿美元（<b class="num up">+5.9%</b>）、调整后EPS 0.81美元虽超预期，但Q3展望不及预期。股价暴跌 <b class="num down">-9.15%</b>，创2022年5月以来最大单日跌幅，市值蒸发约832亿美元，拖累消费必需品/可选消费板块。</p>
+        <div class="why"><b>关注原因</b>沃尔玛是"美国消费风向标"，其放缓直接映射中低收入群体购买力承压，市场担忧消费走弱将从需求端拖累经济与企业盈利，也削弱通胀回落预期，对美联储政策路径存在边际影响。</div>
+      </div>
+    </article>
+
+    <!-- 06 -->
+    <article class="tl-item">
+      <div class="tl-time"><span class="tl-date">08-21</span><span class="tl-clock">04:00</span></div>
+      <div class="tl-track"><span class="tl-dot"></span></div>
+      <div class="tl-card">
+        <div class="card-head"><span class="seq">06</span><h2>美债破40万亿美元：财政部回购"一日游"，长端收益率反弹</h2></div>
+        <div class="badges"><span class="badge src">华尔街见闻</span><span class="badge src">天天基金</span><span class="badge tag">美债</span><span class="badge tag">宏观</span></div>
+        <p class="summary">美国国债总规模史上首次突破 <b class="num up">40万亿美元</b>（人均背负超11万美元）。财政部将10/20/30年期国债流动性回购规模至少翻倍至单次40亿美元（9月9日启动），但提振仅维持一日：10年期收益率回升至4.70%上方，30年期一度重回5.24%-5.26%，逼近近20年高位。财长贝森特称回购规模"可能超过"已公布的40亿美元。</p>
+        <div class="why"><b>关注原因</b>回购并不减少净发债规模，只是把久期压力向短端转移，机构普遍质疑"治标不治本"——市场比喻为"洪水来了再堆几袋沙包"。40万亿存量+赤字与再融资需求+科技企业发债与国债争夺资金，期限溢价的结构性压力未解，长端收益率是全球风险资产定价的核心变量。</div>
+      </div>
+    </article>
+
+    <!-- 07 -->
+    <article class="tl-item">
+      <div class="tl-time"><span class="tl-date">08-20</span><span class="tl-clock">08:00</span></div>
+      <div class="tl-track"><span class="tl-dot"></span></div>
+      <div class="tl-card">
+        <div class="card-head"><span class="seq">07</span><h2>美联储7月纪要偏鹰：3票反对维持利率，9月加息概率约35%</h2></div>
+        <div class="badges"><span class="badge src">新浪财经</span><span class="badge tag">美联储</span><span class="badge tag">货币政策</span></div>
+        <p class="summary">7月会议纪要显示：9票赞成、3票反对维持利率于 <b class="num flat">3.50%-3.75%</b> 不变（洛根、哈马克、卡什卡利主张加息25bp）；"许多"官员认为若通胀不降，有必要进一步收紧政策。市场已定价9月加息概率约 <b class="num flat">35%</b>（7月底曾超70%）。主席沃什提议将每年议息会议从8次减至6次，尚未定论。纪要大篇幅警示AI投资热潮的金融风险（高估值+借贷融资扩张向信用体系传导）。</p>
+        <div class="why"><b>关注原因</b>纪要确认美联储处于"鹰派观望"而非转向宽松，利率路径不确定性未消。对AI估值泡沫的官方警示值得重视，与本周长端收益率上行形成共振。下周英伟达财报与杰克逊霍尔年会（沃什首次作为主席发表主旨讲话）是关键验证点。</div>
+      </div>
+    </article>
+
+    <!-- 08 -->
+    <article class="tl-item">
+      <div class="tl-time"><span class="tl-date">08-21</span><span class="tl-clock">04:00</span></div>
+      <div class="tl-track"><span class="tl-dot"></span></div>
+      <div class="tl-card">
+        <div class="card-head"><span class="seq">08</span><h2>美威胁对伊"经济孤立"：油价飙升，布伦特逼近95美元</h2></div>
+        <div class="badges"><span class="badge src">腾讯自选股</span><span class="badge tag">地缘</span><span class="badge tag">原油</span></div>
+        <p class="summary">美国财长贝森特称将对伊朗实施"前所未有的经济孤立"，定于8月24日召开发布会详述措施，并称大概率不会重启大规模对伊作战。布伦特原油收于 <b class="num up">93.78美元/桶</b>（+2.36%），盘中一度逼近95美元创近四周新高；WTI收 <b class="num up">87.83美元/桶</b>（+2.33%）。美国批准提前销售冬季汽油以缓解压力；俄乌互袭致黑海粮食出口近乎停滞。</p>
+        <div class="why"><b>关注原因</b>油价上行直接推升通胀预期，与长端收益率上行形成"双杀"，压制风险资产估值。贝森特此前称10年期美债收益率与油价"高度相关"；伊朗警告美方任何误判都将付出代价，地缘溢价短期难消，原油是下周市场情绪的重要变量。</div>
+      </div>
+    </article>
+
+    <!-- 09 -->
+    <article class="tl-item">
+      <div class="tl-time"><span class="tl-date">08-20</span><span class="tl-clock">15:30</span></div>
+      <div class="tl-track"><span class="tl-dot"></span></div>
+      <div class="tl-card">
+        <div class="card-head"><span class="seq">09</span><h2>SK海力士创纪录回购+三星百亿股东回报，韩股KOSPI暴涨5.89%</h2></div>
+        <div class="badges"><span class="badge src">证券时报</span><span class="badge tag">半导体</span><span class="badge tag">韩国股市</span></div>
+        <p class="summary">SK海力士宣布回购并注销 <b class="num up">40万亿韩元</b>（约286亿美元）股票——韩国上市公司史上最大规模，并将2025-2027年至少50%自由现金流用于股东回报，8月20日股价大涨近 <b class="num up">13%</b>，同时发布下一代CPO（共封装光学）路线图。三星电子预计8月底董事会批准超 <b class="num up">100万亿韩元</b>（约719亿美元）股东回报计划，AI需求下先进代工部分新订单涨价最高 <b class="num up">15%</b>。8月20日KOSPI暴涨 <b class="num up">+5.89%</b> 收6852.58点（盘中触发Sidecar临停），8月21日开盘回落约1.35%。</p>
+        <div class="why"><b>关注原因</b>韩国存储双雄"天量回购+涨价"验证AI硬件景气与现金流质量，是存储周期向好的强信号；汇丰将韩股评级上调至超配。对A股/港股的存储、半导体映射情绪有正面带动，但暴涨后短线波动加大，需防获利回吐。</div>
+      </div>
+    </article>
+
+    <!-- 10 -->
+    <article class="tl-item">
+      <div class="tl-time"><span class="tl-date">08-26</span><span class="tl-clock">盘后</span></div>
+      <div class="tl-track"><span class="tl-dot"></span></div>
+      <div class="tl-card">
+        <div class="card-head"><span class="seq">10</span><h2>英伟达财报倒计时：AI交易最大考验，机构预期上调指引</h2></div>
+        <div class="badges"><span class="badge src">腾讯自选股</span><span class="badge src">日经</span><span class="badge tag">前瞻</span><span class="badge tag">AI</span></div>
+        <p class="summary">英伟达将于下周三（8/26）盘后发布财报，被市场视为AI交易的最大考验。Stifel、Oppenheimer预计其将超7月季度预期并上调指引（目标价282美元）。高盛数据显示大盘共同基金对英伟达平均低配约100基点，但8月机构资金正回流Mag 7。另据日经报道，英伟达正联合主流EDA厂商推广AI提升芯片设计效率，并与Apollo、黑石等共建AI算力融资平台，目标撬动超5000亿美元第三方资本。</p>
+        <div class="why"><b>关注原因</b>英伟达是纳指100权重股与AI叙事的锚，财报与指引将决定"AI资本开支能否兑现盈利"的市场信仰是否延续。其算力融资平台撬动5000亿美元的模式引发部分系统性风险讨论（循环融资），叠加美联储对AI金融风险的警示，是财报之外值得跟踪的隐忧。</div>
+      </div>
+    </article>
+
+  </main>
+
+  <footer>
+    <div>数据来源：腾讯自选股、新浪财经、华尔街见闻、证券时报、天天基金、CNBC、日经等公开资讯整理（2026-08-20 至 08-21）</div>
+    <div class="line2">免责声明：以上内容基于公开数据和量化分析，仅供参考，不构成投资建议。市场有风险，投资需谨慎。任何投资决策应结合个人风险承受能力、资金状况和投资目标独立判断，必要时咨询持牌专业机构。过往表现不预示未来收益。</div>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var items = document.querySelectorAll('.tl-item');
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(function (el) { el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  items.forEach(function (el, i) {
+    el.style.transitionDelay = ((i % 3) * 0.08) + 's';
+    io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>

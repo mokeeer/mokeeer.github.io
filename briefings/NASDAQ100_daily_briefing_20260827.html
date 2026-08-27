@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>纳指100 &amp; 全球投资要闻 · 2026-08-27</title>
+<style>
+:root{
+  --bg:#f4f7fc;
+  --card:#ffffff;
+  --ink:#1c2b3a;
+  --sub:#5b6b7c;
+  --faint:#8a97a6;
+  --line:#e2e9f3;
+  --blue:#1f6fff;
+  --blue-deep:#1250c8;
+  --blue-soft:#e8f0ff;
+  --blue-line:#cfe0ff;
+  --red:#e0353b;
+  --green:#0a9d58;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:linear-gradient(180deg,#f4f7fc 0%,#eef3fb 100%);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.6;
+}
+
+/* ===== Hero ===== */
+.hero{text-align:center;padding:46px 16px 24px;}
+.kicker{
+  display:inline-block;font-size:12px;letter-spacing:5px;color:var(--blue);
+  font-weight:700;background:var(--blue-soft);border:1px solid var(--blue-line);
+  border-radius:999px;padding:5px 16px;margin-bottom:14px;
+}
+h1{font-size:29px;font-weight:800;letter-spacing:1px;color:var(--ink);margin-bottom:16px;}
+.badges{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+.badge{
+  font-size:12.5px;font-weight:600;padding:7px 16px;border-radius:999px;
+  background:var(--card);color:var(--blue);border:1px solid var(--blue-line);
+  box-shadow:0 1px 4px rgba(20,60,120,.06);
+  display:inline-flex;align-items:center;gap:6px;
+}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:var(--blue);display:inline-block;}
+
+/* ===== 市场快照 ===== */
+.snap{max-width:980px;margin:0 auto;padding:10px 16px 6px;}
+.snap-title{font-size:12px;font-weight:700;letter-spacing:3px;color:var(--faint);margin:0 4px 10px;}
+.snap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.snap-item{
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:10px 12px;display:flex;flex-direction:column;gap:3px;
+  box-shadow:0 1px 3px rgba(20,50,100,.05);
+}
+.snap-name{font-size:11px;color:var(--faint);}
+.snap-val{font-size:13.5px;font-weight:800;font-variant-numeric:tabular-nums;}
+.snap-chg{font-size:11.5px;font-weight:600;}
+.up{color:var(--red);}
+.down{color:var(--green);}
+.neutral{color:var(--sub);}
+.snap-note{font-size:11px;color:#9aa7b5;text-align:center;margin:10px 0 4px;}
+
+/* ===== 时间轴 ===== */
+.tl{position:relative;max-width:980px;margin:0 auto;padding:18px 16px 10px;}
+.tl::before{
+  content:"";position:absolute;left:93px;top:28px;bottom:40px;width:2px;
+  background:linear-gradient(180deg,#1f6fff 0%,#8fb8ff 70%,#dbe7fb 100%);
+  border-radius:2px;
+}
+.tl-item{display:grid;grid-template-columns:84px 1fr;gap:24px;margin-bottom:26px;}
+.tl-marker{position:relative;text-align:right;padding-top:24px;}
+.tl-time{font-size:12px;color:var(--sub);font-weight:600;font-variant-numeric:tabular-nums;line-height:1.45;}
+.tl-dot{
+  position:absolute;right:-7px;top:28px;width:13px;height:13px;border-radius:50%;
+  background:var(--blue);border:3px solid #fff;
+  box-shadow:0 0 0 2px #bcd6ff;
+}
+
+/* ===== 论文卡片 ===== */
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px 18px;box-shadow:0 1px 4px rgba(20,50,100,.06);
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(20,60,130,.12);}
+.card-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+.num{
+  font-family:"SF Mono",Consolas,Menlo,monospace;font-weight:800;font-size:12.5px;
+  color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);
+  border-radius:7px;padding:3px 9px;letter-spacing:.5px;
+}
+.src-badge{
+  font-size:11px;font-weight:700;color:var(--blue-deep);
+  background:#eef4ff;border:1px solid var(--blue-line);
+  border-radius:999px;padding:3px 11px;letter-spacing:.5px;
+}
+.card-time{font-size:11px;color:var(--faint);margin-left:auto;font-variant-numeric:tabular-nums;}
+.card h2{font-size:16.5px;font-weight:800;color:var(--ink);line-height:1.5;margin-bottom:10px;letter-spacing:.3px;}
+.summary{font-size:13.5px;line-height:1.78;color:#33475c;margin-bottom:14px;text-align:justify;}
+.summary b{color:#1c2b3a;}
+.reason{
+  background:#f6f9ff;border-left:3px solid var(--blue);
+  border-radius:0 10px 10px 0;padding:12px 15px 13px;
+}
+.reason-label{
+  display:block;font-size:11px;font-weight:800;color:var(--blue);
+  letter-spacing:2px;margin-bottom:6px;
+}
+.reason p{margin:0;font-size:13px;line-height:1.75;color:#3d4f63;text-align:justify;}
+.reason p b{color:var(--blue-deep);}
+
+/* ===== 底部 ===== */
+footer{max-width:980px;margin:8px auto 0;padding:6px 16px 46px;}
+.foot-note{font-size:12px;color:var(--faint);line-height:1.9;text-align:center;}
+.disclaimer{
+  font-size:12px;color:#9aa7b5;border-top:1px dashed #d3dfee;
+  padding-top:14px;margin-top:12px;text-align:center;line-height:1.9;
+}
+
+/* ===== 滚动渐入 ===== */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* ===== 响应式 ===== */
+@media(max-width:760px){
+  h1{font-size:22px;}
+  .tl{padding:14px 12px 8px;}
+  .tl::before{display:none;}
+  .tl-item{grid-template-columns:1fr;gap:6px;margin-bottom:22px;}
+  .tl-marker{display:none;}
+  .card-time{margin-left:0;width:100%;}
+  .snap-grid{grid-template-columns:repeat(2,1fr);}
+  .card{padding:16px 16px 14px;}
+}
+</style>
+</head>
+<body>
+
+<header class="hero reveal">
+  <span class="kicker">DAILY MARKET BRIEFING</span>
+  <h1>纳指 100 &amp; 全球投资要闻</h1>
+  <div class="badges">
+    <span class="badge"><span class="dot"></span>时间窗 08-26 08:00 ～ 08-27 09:44（北京时间）</span>
+    <span class="badge"><span class="dot"></span>新闻总数 10 条</span>
+  </div>
+</header>
+
+<section class="snap reveal">
+  <div class="snap-title">市场快照 · 美东 08-26 收盘 / 08-27 上午最新</div>
+  <div class="snap-grid">
+    <div class="snap-item"><span class="snap-name">纳斯达克100</span><span class="snap-val up">29224.52</span><span class="snap-chg up">+0.05%</span></div>
+    <div class="snap-item"><span class="snap-name">标普500</span><span class="snap-val down">7675.70</span><span class="snap-chg down">-0.02%</span></div>
+    <div class="snap-item"><span class="snap-name">纳斯达克综指</span><span class="snap-val down">26130.20</span><span class="snap-chg down">-0.08%</span></div>
+    <div class="snap-item"><span class="snap-name">道琼斯</span><span class="snap-val down">53463.88</span><span class="snap-chg down">-0.21%</span></div>
+    <div class="snap-item"><span class="snap-name">COMEX黄金</span><span class="snap-val up">4676.6 美元</span><span class="snap-chg up">+0.50%</span></div>
+    <div class="snap-item"><span class="snap-name">10年期美债</span><span class="snap-val neutral">4.66%</span><span class="snap-chg up">+3bp</span></div>
+    <div class="snap-item"><span class="snap-name">WTI原油</span><span class="snap-val down">82.23 美元</span><span class="snap-chg down">-0.16%</span></div>
+    <div class="snap-item"><span class="snap-name">比特币</span><span class="snap-val up">78784 美元</span><span class="snap-chg up">+0.73%</span></div>
+  </div>
+  <p class="snap-note">注：纳指100另有媒体口径称收跌约0.5%，与行情快照存在口径分歧；黄金/美债/原油/比特币为最近可得时点数据，红涨绿跌。</p>
+</section>
+
+<section class="tl" id="tl">
+
+  <div class="tl-item reveal">
+    <div class="tl-marker"><div class="tl-time">08-27<br>05:00</div><div class="tl-dot"></div></div>
+    <article class="card">
+      <div class="card-top">
+        <span class="num">01</span>
+        <span class="src-badge">财联社 · 华尔街见闻</span>
+        <span class="card-time">2026-08-27 05:00（北京时间）· 美东 8/26 盘后</span>
+      </div>
+      <h2>英伟达财报全面超预期，营收同比翻倍</h2>
+      <p class="summary">2027财年Q2营收 <b>962亿美元</b>（同比 <b>+106%</b>，预期923.8亿）；数据中心营收 <b>890亿美元</b>（+117%），占总营收92.5%；调整后EPS <b>2.22美元</b>（+120%），毛利率75%。Q3指引营收中值 <b>1080亿美元</b>（+90%，高于预期1051.5亿），管理层预计2028财年营收增长约70%（远超市场预估45%）。黄仁勋称"AI已到拐点"，Vera Rubin 已全面量产并开始发货。财报公布后股价盘后一度跌超3%，随后直线拉涨约4%~5%。</p>
+      <div class="reason">
+        <span class="reason-label">关注原因</span>
+        <p>AI算力景气度的"总开关"：业绩与指引双超预期，直接验证AI资本开支周期仍在加速而非见顶，缓解此前市场对"AI泡沫"的担忧；2028财年70%指引远超预期，为存储、光通信、AI云整条产业链提供了确定性锚点。</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="tl-item reveal">
+    <div class="tl-marker"><div class="tl-time">08-27<br>05:30</div><div class="tl-dot"></div></div>
+    <article class="card">
+      <div class="card-top">
+        <span class="num">02</span>
+        <span class="src-badge">金十数据 · 华尔街见闻</span>
+        <span class="card-time">2026-08-27 05:30（北京时间）· 盘后</span>
+      </div>
+      <h2>财报提振AI链盘后普涨，HBM4供应加码</h2>
+      <p class="summary">财报公布后，纳指100期货盘初一度涨约1%；存储、光通信、AI云服务板块盘后集体走高——闪迪、美光涨超3.8%，SK海力士涨超4.5%，康宁涨超2%。另据媒体报道，三星电子与SK海力士计划下半年增加对英伟达<b>8层HBM4</b>内存的供应量。</p>
+      <div class="reason">
+        <span class="reason-label">关注原因</span>
+        <p>盘后定价表明市场将财报视为AI硬件链的正面催化而非"利好出尽"；HBM4放量进一步强化存储超级周期逻辑，对A股/港股算力链（CPO光模块、PCB、液冷、AI服务器）构成直接映射，今日开盘大概率高开。</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="tl-item reveal">
+    <div class="tl-marker"><div class="tl-time">08-27<br>04:00</div><div class="tl-dot"></div></div>
+    <article class="card">
+      <div class="card-top">
+        <span class="num">03</span>
+        <span class="src-badge">华尔街见闻 · 金十数据</span>
+        <span class="card-time">2026-08-27 04:00（北京时间）· 美东 8/26 收盘</span>
+      </div>
+      <h2>美股三大指数小幅收跌，存储与光通信逆势走强</h2>
+      <p class="summary">道指 <b>-0.21%</b> 报53463.88（止步连涨），标普500 <b>-0.02%</b> 报7675.70，纳指 <b>-0.08%</b> 报26130.20，纳指100报29224.52（+0.05%）。存储芯片逆势走强：西部数据 +4.02%、Arm +3.93%、希捷 +3%；光通信领涨：Lumentum +6%、Arista +5.92%、康宁 +3.82%。大型科技股分化：苹果 +1.15%、Meta +1.07%，英伟达 -1.59%、特斯拉 -1.26%、谷歌 -1.23%。</p>
+      <div class="reason">
+        <span class="reason-label">关注原因</span>
+        <p>指数在英伟达财报前窄幅观望、成交清淡，但存储与光通信独立走强，显示资金提前布局AI硬件结构性主线；"科技七巨头"内部已明显分化，算力硬件与软件/平台股的相对强弱值得持续跟踪。</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="tl-item reveal">
+    <div class="tl-marker"><div class="tl-time">08-26<br>夜盘</div><div class="tl-dot"></div></div>
+    <article class="card">
+      <div class="card-top">
+        <span class="num">04</span>
+        <span class="src-badge">华尔街见闻</span>
+        <span class="card-time">2026-08-26 美盘（北京时间 8/27 凌晨）</span>
+      </div>
+      <h2>比特币突破8.1万美元创三个月新高，金价高位回调</h2>
+      <p class="summary">比特币盘中突破 <b>8.1万美元</b> 创三个月新高，收涨0.73%报78784美元。现货黄金8/26收跌约1%报约4591美元/盎司（媒体口径），结束四日连涨；COMEX黄金期货8/27上午报 <b>4676.6美元/盎司（+0.50%）</b>。美元指数 +0.23% 报99.07。</p>
+      <div class="reason">
+        <span class="reason-label">关注原因</span>
+        <p>风险资产内部轮动信号：加密创新高+金价回调，反映中东避险情绪降温、资金风险偏好回升；黄金中期逻辑（央行购金、财政赤字扩张、美债供给）未变，短期回调或为配置提供观察窗口。</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="tl-item reveal">
+    <div class="tl-marker"><div class="tl-time">08-26<br>美盘</div><div class="tl-dot"></div></div>
+    <article class="card">
+      <div class="card-top">
+        <span class="num">05</span>
+        <span class="src-badge">金十数据 · 华尔街见闻</span>
+        <span class="card-time">2026-08-26 美盘（北京时间 8/27 凌晨）</span>
+      </div>
+      <h2>伊朗与阿曼达成海峡谅解，油价盘中一度跌超4.5%</h2>
+      <p class="summary">伊朗称与阿曼就<b>霍尔木兹海峡</b>通行及收益分配达成谅解，拟建立共同安全海上通道（暂为临时措施，30~60天内就永久航线谈判）。国际油价连续大幅回落：WTI收82.23美元/桶（-0.16%）、布伦特87.84美元/桶（-0.84%），盘中一度跌超4.5%。但消息存在反复——阿曼被曝停止与美国合作、以总理称难与伊朗达成外交协议。</p>
+      <div class="reason">
+        <span class="reason-label">关注原因</span>
+        <p>海峡若恢复通航，油价地缘溢价快速回吐，将缓解通胀与美债收益率压力，利好成长股风险偏好与全球制造业成本端；但协议细节未敲定，供应风险属于"延后而非消除"，油价波动率仍高。</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="tl-item reveal">
+    <div class="tl-marker"><div class="tl-time">08-26<br>20:30</div><div class="tl-dot"></div></div>
+    <article class="card">
+      <div class="card-top">
+        <span class="num">06</span>
+        <span class="src-badge">金十数据 · 环球市场播报</span>
+        <span class="card-time">2026-08-26 20:30（北京时间）· 美东 8:30</span>
+      </div>
+      <h2>美国7月PCE偏热，9月"加息"概率升至约四成</h2>
+      <p class="summary">7月PCE同比 <b>+3.7%</b>（高于预期的3.6%，与前值持平）；核心PCE同比 +3.3%、环比 +0.2% 均符合预期。同日公布Q2 GDP增速 <b>1.5%</b>。数据偏热使市场对美联储9月<b>加息</b>概率定价升至约40%~42%（此前约36%），10年期美债收益率上行3bp至 <b>4.66%</b>。</p>
+      <div class="reason">
+        <span class="reason-label">关注原因</span>
+        <p>通胀粘性延续，本轮周期市场定价方向是"加息"而非"降息"（与常规周期相反），美债高位收益率持续压制权益估值；周五杰克逊霍尔美联储主席沃什讲话是下一个关键变量，若基调偏鹰，成长股估值将承压。</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="tl-item reveal">
+    <div class="tl-marker"><div class="tl-time">08-26<br>16:00</div><div class="tl-dot"></div></div>
+    <article class="card">
+      <div class="card-top">
+        <span class="num">07</span>
+        <span class="src-badge">金十数据 · 陆家嘴财经早餐</span>
+        <span class="card-time">2026-08-26 16:00（北京时间）· 港股收盘</span>
+      </div>
+      <h2>港股收涨，铜业与中资券商走强</h2>
+      <p class="summary">恒指 <b>+0.56%</b> 报25652.97，恒生科技 +0.82%，国企指数 +1.05%；大市成交2548亿港元，南向净买入4.53亿港元。铜业股领涨：江西铜业 +9%、洛阳钼业 +7.3%；中资券商活跃：中金公司 +8%、申万宏源香港 +7%；芯片股走强：华虹宏力 +6%、中芯国际 +2%。上交所公告将<b>中际旭创</b>调入沪港通下港股通标的（8/27生效）。</p>
+      <div class="reason">
+        <span class="reason-label">关注原因</span>
+        <p>COMEX期铜续创历史新高带动有色板块，铜价上行兼具"再通胀+AI电力需求"双逻辑；券商走强反映市场对指数突破的预期升温；中际旭创纳入港股通为算力链带来南向增量资金，关注今日港股光通信板块对英伟达财报的反应。</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="tl-item reveal">
+    <div class="tl-marker"><div class="tl-time">08-26<br>15:00</div><div class="tl-dot"></div></div>
+    <article class="card">
+      <div class="card-top">
+        <span class="num">08</span>
+        <span class="src-badge">同花顺 · 陆家嘴财经早餐</span>
+        <span class="card-time">2026-08-26 15:00（北京时间）· A股收盘</span>
+      </div>
+      <h2>A股缩量反弹，黄金概念与券商领涨</h2>
+      <p class="summary">上证 <b>+0.59%</b> 报3912.52，深成指 +0.69% 报13841.33，创业板指 +0.51% 报3414.88；两市成交 <b>1.81万亿元</b>（缩量约224亿），连续两日不足2万亿，超2900只个股上涨。黄金概念领涨（深中华A 5连板，迪阿股份、金诚信、白银有色等涨停），证券板块强势（楚天龙4连板、湘财股份涨停）；医疗服务、电机领跌。</p>
+      <div class="reason">
+        <span class="reason-label">关注原因</span>
+        <p>缩量反弹显示存量资金博弈、增量入场偏慢，权重强于题材；黄金板块随金价高位持续活跃，券商走强则暗含对指数向上突破的期待；今日关注算力链能否借英伟达财报东风放量，放量与否决定反弹成色。</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="tl-item reveal">
+    <div class="tl-marker"><div class="tl-time">08-26<br>盘后</div><div class="tl-dot"></div></div>
+    <article class="card">
+      <div class="card-top">
+        <span class="num">09</span>
+        <span class="src-badge">华尔街见闻</span>
+        <span class="card-time">2026-08-26（北京时间）· 港股盘后发布</span>
+      </div>
+      <h2>理想汽车Q2由盈转亏，Q3指引低于预期</h2>
+      <p class="summary">Q2营收 <b>256.67亿元</b>（同比 -15.1%），调整后净亏损 <b>15亿元</b> 由盈转亏，车辆毛利率收窄至 <b>9.4%</b>，交付9.83万辆；Q3营收指引中值较市场预期低约 <b>17%</b>，交付指引9.5万~10万辆低于预估。公司斥资6.3亿美元回购，新一代纯电车型MEGA定于 <b>9月2日</b> 发布。</p>
+      <div class="reason">
+        <span class="reason-label">关注原因</span>
+        <p>价格战叠加纯电转型阵痛：毛利率与指引双弱，反映行业竞争烈度；新势力财报分化加剧，理想从"盈利优等生"转亏的示范效应值得警惕；9月MEGA发布能否打开第二增长曲线是关键观察点。</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="tl-item reveal">
+    <div class="tl-marker"><div class="tl-time">08-26<br>全天</div><div class="tl-dot"></div></div>
+    <article class="card">
+      <div class="card-top">
+        <span class="num">10</span>
+        <span class="src-badge">上海证券报 · 南方财经</span>
+        <span class="card-time">2026-08-26（北京时间）</span>
+      </div>
+      <h2>纳斯达克确认12月6日启动"23/5"全球交易时段</h2>
+      <p class="summary">纳斯达克确认2026年<b>12月6日</b>启动"23/5"计划：每周5天、每天23小时交易，仅休市1小时用于系统维护；日间时段美东4:00~20:00、隔夜时段21:00~次日4:00。NYXE Arca（22小时）、芝商所（全天候黄金/原油合约）、伦交所（夜间平台）等竞相跟进，一场围绕订单与流动性的全球竞赛全面展开。</p>
+      <div class="reason">
+        <span class="reason-label">关注原因</span>
+        <p>交易制度里程碑：亚洲与欧洲投资者可覆盖更广交易窗口，全球订单流向与流动性分布将被重塑；对券商交易基础设施、做市商与流动性提供方构成中长期结构性变量，也意味着美股对全球资金的虹吸效应进一步强化。</p>
+      </div>
+    </article>
+  </div>
+
+</section>
+
+<footer class="reveal">
+  <p class="foot-note">
+    数据说明：行情快照为美东 2026-08-26 收盘（纳指100/标普500/道指/纳指综指），黄金、美债、原油、比特币为最近可得时点；新闻事件时间均为北京时间。纳指100涨跌存在行情快照（+0.05%）与媒体口径（收跌约0.5%）分歧；现货黄金跌幅为媒体口径，与期货最新价因时点/品种不同存在差异。资料来源：财联社、华尔街见闻、金十数据、上海证券报、同花顺、陆家嘴财经早餐等公开财经媒体（非一手来源，需以原始报道核实）。
+  </p>
+  <p class="disclaimer">
+    <b>免责声明：</b>以上内容基于公开数据和量化分析，仅供参考，不构成投资建议。市场有风险，投资需谨慎。任何投资决策应结合个人风险承受能力、资金状况和投资目标独立判断，必要时咨询持牌专业机构。过往表现不预示未来收益。
+  </p>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    for(var i=0;i<els.length;i++){ els[i].classList.add('visible'); }
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    for(var j=0;j<entries.length;j++){
+      var e = entries[j];
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    }
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  for(var k=0;k<els.length;k++){ io.observe(els[k]); }
+})();
+</script>
+
+</body>
+</html>
